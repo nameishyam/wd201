@@ -1,7 +1,5 @@
-let hello = "Hello World";
-
-helloWorld = () => {
-    console.log("Hello World");
+const helloWorld = () => {
+    console.log("Hello GitHub!");
 };
 
 helloWorld();
