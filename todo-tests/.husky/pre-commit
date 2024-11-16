@@ -1,1 +1,2 @@
 cd todo-tests && npm test
+npx lint-staged
