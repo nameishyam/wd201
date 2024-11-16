@@ -4,9 +4,9 @@
   "main": "todo.js",
   "scripts": {
     "test": "jest",
-    "prepare": "npx husky install"
+    "prepare": "cd .. && husky todo-tests/.husky"
   },
-  "author": "shyam <geddamgowtham4@gmail.com>",
+  "author": "shyam",
   "license": "ISC",
   "description": "",
   "devDependencies": {
