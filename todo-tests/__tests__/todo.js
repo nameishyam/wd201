@@ -12,9 +12,7 @@ describe("todolist test suits", () => {
     });
     expect(all.length).toBe(1);
   });
-});
 
-describe("todolist test suits", () => {
   test("mark todo item as complete", () => {
     expect(all[0].completed).toBe(false);
     markAsComplete(0);
