@@ -14,7 +14,7 @@ describe("todolist test suits", () => {
   test("add todo item", () => {
     const todoItemCount = all.length;
     add({
-      title: "Todo test",
+      title: "Todo test - 2",
       completed: false,
       dueDate: new Date().toLocaleDateString("en-CA"),
     });
