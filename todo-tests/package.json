@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "todo.js",
   "scripts": {
-    "test": "jest",
-    "prepare": "cd .. && husky todo-tests/.husky"
+    "test": "jest"
   },
   "author": "shyam",
   "license": "ISC",
