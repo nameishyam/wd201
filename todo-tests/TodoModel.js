@@ -18,7 +18,8 @@ Todo.init(
       allowNull: false,
     },
     dueDate: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
+      allowNull: false,
     },
     completed: {
       type: DataTypes.BOOLEAN,
