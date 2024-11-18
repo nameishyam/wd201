@@ -1,18 +1,19 @@
-const { Sequelize, DataTypes, Model } = require("sequelize");
-const sequelize = require("./connectDB.js");
+const { DataTypes, Model } = require("sequelize");
+const { sequelize } = require("./connectDB.js");
 
-class User extends Model {}
-User.init(
+class Todo extends Model {}
+Todo.init(
   {
+    // Model attributes are defined here
     title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    name: {
-      type: DataTypes.STRING,
+    dueDate: {
+      type: DataTypes.DATEONLY,
     },
-    id: {
-      type: DataTypes.INTEGER,
+    completed: {
+      type: DataTypes.BOOLEAN,
     },
   },
   {
@@ -20,6 +21,5 @@ User.init(
   }
 );
 
-module.exports = User;
-
-User.sync();
+Todo.sync();
+module.exports = Todo;
