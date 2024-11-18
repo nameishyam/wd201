@@ -17,8 +17,20 @@ const createTodo = async () => {
 
 const countItems = async () => {
   try {
-    const items = await Todo.count();
-    console.log(`Total items: ${items}`);
+    const noItems = await Todo.count();
+    console.log(`Total items: ${noItems}`);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const todos = async () => {
+  try {
+    const items = await Todo.findAll();
+    const todosList = await items
+      .map((item) => item.displayableStrings())
+      .join(`\n`);
+    console.log(todosList);
   } catch (error) {
     console.log(error);
   }
@@ -27,4 +39,5 @@ const countItems = async () => {
 (async () => {
   await createTodo();
   await countItems();
+  await todos();
 })();

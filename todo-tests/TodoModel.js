@@ -5,8 +5,9 @@ class Todo extends Model {
   static async addTask(params) {
     return await Todo.create(params);
   }
-  static async count() {
-    return await Todo.count();
+
+  displayableStrings() {
+    return `${this.id}. ${this.title} - ${this.dueDate}`;
   }
 }
 Todo.init(
@@ -17,7 +18,7 @@ Todo.init(
       allowNull: false,
     },
     dueDate: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
     },
     completed: {
       type: DataTypes.BOOLEAN,
