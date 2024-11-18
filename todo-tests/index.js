@@ -6,7 +6,7 @@ const createTodo = async () => {
     await connect();
     const todo = await Todo.addTask({
       title: "first item",
-      duedate: new Date(),
+      dueDate: new Date(),
       completed: false,
     });
     console.log(`created todo with id: ${todo.id}`);
@@ -24,9 +24,11 @@ const countItems = async () => {
   }
 };
 
-const todos = async () => {
+const getAllTodos = async () => {
   try {
-    const items = await Todo.findAll();
+    const items = await Todo.findAll({
+      order: [[`id`, `DESC`]],
+    });
     const todosList = await items
       .map((item) => item.displayableStrings())
       .join(`\n`);
@@ -39,5 +41,5 @@ const todos = async () => {
 (async () => {
   await createTodo();
   await countItems();
-  await todos();
+  await getAllTodos();
 })();
