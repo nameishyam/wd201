@@ -46,8 +46,27 @@ const getAllTodos = async () => {
   }
 };
 
+const getSingleTodo = async () => {
+  try {
+    const items = await Todo.findOne({
+      where: {
+        completed: false,
+      },
+      order: [[`id`, `DESC`]],
+    });
+    if (items.length === 0) {
+      console.log(`no results found`);
+    } else {
+      console.log(items.displayableStrings());
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 (async () => {
-  await createTodo();
-  await countItems();
-  await getAllTodos();
+  //   await createTodo();
+  //   await countItems();
+  //   await getAllTodos();
+  await getSingleTodo();
 })();
