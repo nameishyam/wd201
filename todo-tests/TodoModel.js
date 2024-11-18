@@ -5,6 +5,9 @@ class Todo extends Model {
   static async addTask(params) {
     return await Todo.create(params);
   }
+  static async count() {
+    return await Todo.count();
+  }
 }
 Todo.init(
   {
