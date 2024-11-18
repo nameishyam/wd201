@@ -4,12 +4,22 @@ const sequelize = require("./connectDB.js");
 class User extends Model {}
 User.init(
   {
-    username: DataTypes.STRING,
-    birthday: DataTypes.DATE,
-    userid: DataTypes.INTEGER,
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    name: {
+      type: DataTypes.STRING,
+    },
+    id: {
+      type: DataTypes.INTEGER,
+    },
   },
   {
     sequelize,
-    modelName: "user",
   }
 );
+
+module.exports = User;
+
+User.sync();
