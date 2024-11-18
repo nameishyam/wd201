@@ -4,7 +4,7 @@ const Todo = require("./TodoModel");
 const createTodo = async () => {
   try {
     await connect();
-    const todo = await Todo.create({
+    const todo = await Todo.addTask({
       title: "first item",
       duedate: new Date(),
       completed: false,
