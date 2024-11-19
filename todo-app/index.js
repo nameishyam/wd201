@@ -6,8 +6,15 @@ app.use(bodyParser.json());
 
 const { Todo } = require("./models");
 
-app.get(`/todos`, (request, response) => {
+app.get(`/todos`, async (request, response) => {
   console.log(`Todo list`);
+  try {
+    const todos = await Todo.getAllTodos();
+    return response.status(200).json(todos);
+  } catch (error) {
+    console.log(error);
+    return response.status(422).json({ error: error.message });
+  }
 });
 
 app.post(`/todos`, async (request, response) => {
@@ -37,8 +44,15 @@ app.put(`/todos/:id/markAsComplete`, async (request, response) => {
   }
 });
 
-app.delete(`/todos/:id`, (request, response) => {
+app.delete(`/todos/:id`, async (request, response) => {
   console.log(`Todo deleted`, request.params.id);
+  try {
+    const deletedTodo = await Todo.deleteTodo(request.params.id);
+    return response.status(204).json(deletedTodo);
+  } catch (error) {
+    console.log(error);
+    return response.status(422).json({ error: error.message });
+  }
 });
 
 app.listen(3000, () => {
