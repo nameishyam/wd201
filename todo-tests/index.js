@@ -27,19 +27,14 @@ const countItems = async () => {
 
 const getAllTodos = async () => {
   try {
-    const items = await Todo.findAll({
-      where: {
-        completed: true,
-      },
-      order: [[`id`, `DESC`]],
-    });
-    const todosList = await items
+    const items = await Todo.findAll();
+    const todoList = await items
       .map((item) => item.displayableStrings())
       .join(`\n`);
     if (todoList.length === 0) {
       console.log(`no results found`);
     } else {
-      console.log(todosList);
+      console.log(todoList);
     }
   } catch (error) {
     console.log(error);
