@@ -61,14 +61,12 @@ const getSingleTodo = async () => {
   }
 };
 
-const updateModel = async () => {
+const updateModel = async (id) => {
   try {
-    const todo = await Todo.update(
-      { completed: false },
-      { where: { completed: true, id: 12 } }
+    await Todo.update(
+      { completed: true },
+      { where: { id: id } }
     );
-    console.log();
-    console.log(`updated ${todo} items`);
   } catch (error) {
     console.log(error);
   }
@@ -79,5 +77,6 @@ const updateModel = async () => {
   await countItems();
   await getAllTodos();
   await getSingleTodo();
-  await updateModel();
+  await updateModel(11);
+  await getAllTodos();
 })();
