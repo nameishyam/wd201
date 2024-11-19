@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
-
+const PORT = 3000;
 const { Todo } = require("./models");
 
 app.get(`/todos`, async (request, response) => {
@@ -56,6 +56,6 @@ app.delete(`/todos/:id`, async (request, response) => {
   }
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log(`listeneing to port 3000`);
 });
