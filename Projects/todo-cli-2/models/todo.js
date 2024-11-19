@@ -16,20 +16,7 @@ module.exports = (sequelize, DataTypes) => {
 
       console.log("Overdue");
       // FILL IN HERE
-      try {
-        const overdueItems = await Todo.findAll({
-          where: {
-            dueDate: {
-              [Op.lt]: new Date(),
-            },
-          },
-        });
-        console.log(
-          overdueItems.map((item) => item.displayableString()).join(`\n`)
-        );
-      } catch (error) {
-        console.log(error);
-      }
+      console.log(await this.overdue());
 
       console.log("\n");
 
@@ -58,6 +45,21 @@ module.exports = (sequelize, DataTypes) => {
 
     static async overdue() {
       // FILL IN HERE TO RETURN OVERDUE ITEMS
+      try {
+        const overdueItems = await Todo.findAll({
+          where: {
+            dueDate: {
+              [Op.lt]: new Date(),
+            },
+          },
+        });
+        const overdueItemsList = overdueItems
+          .map((item) => item.displayableString())
+          .join(`\n`);
+      } catch (error) {
+        console.log(error);
+      }
+      return overdueItemsList;
     }
 
     static async dueToday() {
