@@ -22,20 +22,7 @@ module.exports = (sequelize, DataTypes) => {
 
       console.log("Due Today");
       // FILL IN HERE
-      try {
-        const dueTodayItems = await Todo.findAll({
-          where: {
-            dueDate: {
-              [Op.eq]: new Date(),
-            },
-          },
-        });
-        console.log(
-          dueTodayItems.map((item) => item.displayableString()).join(`\n`)
-        );
-      } catch (error) {
-        console.log(error);
-      }
+      console.log(await this.dueToday());
 
       console.log("\n");
 
@@ -64,6 +51,21 @@ module.exports = (sequelize, DataTypes) => {
 
     static async dueToday() {
       // FILL IN HERE TO RETURN ITEMS DUE tODAY
+      try {
+        const dueTodayItems = await Todo.findAll({
+          where: {
+            dueDate: {
+              [Op.eq]: new Date(),
+            },
+          },
+        });
+        const dueTodayItemsList = dueTodayItems
+          .map((item) => item.displayableString())
+          .join(`\n`);
+      } catch (error) {
+        console.log(error);
+      }
+      return dueTodayItemsList;
     }
 
     static async dueLater() {
