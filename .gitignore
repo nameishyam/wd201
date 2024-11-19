@@ -1,6 +1,2 @@
-http-server/package-lock.json
-http-server/node_modules
 practice
-todo-cli/node_modules
-todo-tests/node_modules
-todo-database/node_modules
+node_modules/
