@@ -31,7 +31,7 @@ const getAllTodos = async () => {
     const todoList = await items
       .map((item) => item.displayableStrings())
       .join(`\n`);
-      console.log();
+    console.log();
     if (todoList.length === 0) {
       console.log(`no results found`);
     } else {
@@ -63,20 +63,33 @@ const getSingleTodo = async () => {
 
 const updateModel = async (id) => {
   try {
-    await Todo.update(
-      { completed: true },
-      { where: { id: id } }
-    );
+    await Todo.update({ completed: false }, { where: { id: id } });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const deleteModel = async (id) => {
+  try {
+    const deletedId = await Todo.destroy({
+      where: {
+        id: id,
+      },
+    });
+    console.log();
+    console.log(`deleted ${deletedId} rows`);
   } catch (error) {
     console.log(error);
   }
 };
 
 (async () => {
-  // await createTodo();
+  await createTodo();
   await countItems();
   await getAllTodos();
   await getSingleTodo();
-  await updateModel(11);
+  await updateModel(2);
+  await getAllTodos();
+  await deleteModel(1);
   await getAllTodos();
 })();
