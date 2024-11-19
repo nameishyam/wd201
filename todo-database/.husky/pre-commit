@@ -1,1 +1,2 @@
 cd todo-database && npm test
+npx lint-staged
