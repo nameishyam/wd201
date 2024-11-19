@@ -47,8 +47,9 @@ app.put(`/todos/:id/markAsComplete`, async (request, response) => {
 app.delete(`/todos/:id`, async (request, response) => {
   console.log(`Todo deleted`, request.params.id);
   try {
-    const deletedTodo = await Todo.deleteTodo(request.params.id);
-    return response.status(204).json(deletedTodo);
+    await Todo.deleteTodo(request.params.id);
+    const remainingTodos = await Todo.findAll();
+    return response.status(200).json(remainingTodos);
   } catch (error) {
     console.log(error);
     return response.status(422).json({ error: error.message });

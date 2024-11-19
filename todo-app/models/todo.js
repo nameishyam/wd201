@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
     static async deleteTodo(id) {
-      return await Todo.destroy({
+      await Todo.destroy({
         where: {
           id: id,
         },
