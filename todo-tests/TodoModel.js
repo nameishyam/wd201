@@ -7,12 +7,11 @@ class Todo extends Model {
   }
 
   displayableStrings() {
-    return `${this.id}. ${this.title} - ${this.dueDate} ${this.completed ? '[X]' : '[ ]'}`;
+    return `${this.id}. ${this.title} - ${this.dueDate} ${this.completed ? "[X]" : "[ ]"}`;
   }
 }
 Todo.init(
   {
-    // Model attributes are defined here
     title: {
       type: DataTypes.STRING,
       allowNull: false,

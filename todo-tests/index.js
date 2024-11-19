@@ -1,6 +1,5 @@
-const { connect } = require("./connectDB");
-const todoList = require("./todo");
-const Todo = require("./TodoModel");
+const { connect } = require("./connectDB.js");
+const Todo = require("./TodoModel.js");
 
 const createTodo = async () => {
   try {
