@@ -1,6 +1,6 @@
 // models/todo.js
 "use strict";
-const { Model } = require("sequelize");
+const { Model, Op } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Todo extends Model {
     /**
@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
 
       console.log("Due Later");
       // FILL IN HERE
+      console.log(await this.dueLater());
     }
 
     static async overdue() {
@@ -70,6 +71,19 @@ module.exports = (sequelize, DataTypes) => {
 
     static async dueLater() {
       // FILL IN HERE TO RETURN ITEMS DUE LATER
+      try {
+        const dueLaterItems = await Todo.findAll({
+          where: {
+            [Op.gt]: new Date(),
+          },
+        });
+        const dueLaterItemsList = dueLaterItems
+          .map((item) => item.displayableString())
+          .joion(`\n`);
+      } catch (error) {
+        console.log(error);
+      }
+      return dueLaterItemsList;
     }
 
     static async markAsComplete(id) {
