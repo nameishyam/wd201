@@ -3,4 +3,4 @@ http-server/node_modules
 practice
 # todo-cli
 todo-tests/node_modules
-# todo-tests/package-lock.json
+todo-database/node_modules

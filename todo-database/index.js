@@ -89,6 +89,6 @@ const deleteModel = async (id) => {
   await getSingleTodo();
   await updateModel(2);
   await getAllTodos();
-  await deleteModel(1);
+  await deleteModel(54);
   await getAllTodos();
 })();
