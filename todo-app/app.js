@@ -25,7 +25,7 @@ app.post(`/todos`, async (request, response) => {
       dueDate: request.body.dueDate,
       completed: false,
     });
-    return response.status(201).json(todo);
+    return response.status(200).json(todo);
   } catch (error) {
     console.log(error);
     return response.status(422).json({ error: error.message });
