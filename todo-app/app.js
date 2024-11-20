@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
-const PORT = 3000;
 const { Todo } = require("./models");
 
 app.get(`/todos`, async (request, response) => {
@@ -32,7 +31,7 @@ app.post(`/todos`, async (request, response) => {
   }
 });
 
-app.put(`/todos/:id/markAsComplete`, async (request, response) => {
+app.put(`/todos/:id/markAsCompleted`, async (request, response) => {
   console.log(`Todo marked as complete`, request.params.id);
   try {
     const todo = await Todo.findByPk(request.params.id);

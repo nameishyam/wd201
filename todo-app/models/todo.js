@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     markAsCompleted() {
-      return this.update({ completed: false });
+      return this.update({ completed: true });
     }
   }
   Todo.init(
