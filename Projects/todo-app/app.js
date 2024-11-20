@@ -11,7 +11,13 @@ app.get("/", function (request, response) {
 app.get("/todos", async function (_request, response) {
   console.log("Processing list of all Todos ...");
   // FILL IN YOUR CODE HERE
-
+  try {
+    const todos = await Todo.getAllTodos();
+    return response.status(200).send(todos);
+  } catch (error) {
+    console.log(error);
+    return response.status(422).json({ error: error.message });
+  }
   // First, we have to query our PostgerSQL database using Sequelize to get list of all Todos.
   // Then, we have to respond with all Todos, like:
   // response.send(todos)
@@ -51,7 +57,13 @@ app.put("/todos/:id/markAsCompleted", async function (request, response) {
 app.delete("/todos/:id", async function (request, response) {
   console.log("We have to delete a Todo with ID: ", request.params.id);
   // FILL IN YOUR CODE HERE
-
+  try {
+    await Todo.deleteTodo(request.params.id);
+    return response.status(200).send(true);
+  } catch (error) {
+    console.log(error);
+    return response.status(422).json({ error: error.message });
+  }
   // First, we have to query our database to delete a Todo by ID.
   // Then, we have to respond back with true/false based on whether the Todo was deleted or not.
   // response.send(true)
