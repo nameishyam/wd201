@@ -10,6 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+    static async addTodo(todo) {
+      return this.create(todo);
+    }
     static getAllTodos() {
       return this.findAll();
     }
