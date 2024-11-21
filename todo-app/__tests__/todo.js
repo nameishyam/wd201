@@ -4,7 +4,7 @@ const app = require("../app");
 
 let server, agent;
 
-describe("todo test suite", () => {
+describe("todo test suite", () =>{
   beforeAll(async () => {
     await db.sequelize.sync({ force: true });
     server = app.listen(3000, () => {});
